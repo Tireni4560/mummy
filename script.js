@@ -1,5 +1,6 @@
 const stage = document.querySelector('.stage');
 const audio = document.getElementById('bg-audio');
+const tapGate = document.getElementById('tap-gate');
 
 const sequence = [
   { type: 'title', text: 'Happy Birthday Mummy', charDelay: 120, holdAfter: 2000 },
@@ -262,38 +263,14 @@ function launchConfetti(count = 60) {
   }
 }
 
-async function startExperience() {
-  audio.muted = true;
-  const unlock = async () => {
-    try {
-      audio.muted = false;
-      await audio.play();
-    } catch (err) {
-      audio.muted = true;
-      try {
-        await audio.play();
-      } catch (playErr) {
-        // Ignored; the experience still proceeds.
-      }
-    }
-
-    document.removeEventListener('touchstart', unlock);
-    document.removeEventListener('click', unlock);
-    document.removeEventListener('pointerdown', unlock);
-    document.removeEventListener('keydown', unlock);
-  };
-
-  try {
-    await audio.play();
-    audio.muted = false;
-  } catch (error) {
-    document.addEventListener('touchstart', unlock, { once: true, passive: true });
-    document.addEventListener('click', unlock, { once: true, passive: true });
-    document.addEventListener('pointerdown', unlock, { once: true, passive: true });
-    document.addEventListener('keydown', unlock, { once: true, passive: true });
-  }
-
-  runSequence();
+function dismissGateAndStart() {
+  audio.play().catch(() => {});
+  tapGate.classList.add('hidden');
+  setTimeout(() => {
+    tapGate.style.display = 'none';
+    runSequence();
+  }, 800);
 }
 
-window.addEventListener('load', startExperience);
+tapGate.addEventListener('click', dismissGateAndStart, { once: true });
+tapGate.addEventListener('touchend', dismissGateAndStart, { once: true });

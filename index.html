@@ -11,11 +11,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="tap-gate" aria-label="Tap to begin">
+      <div class="tap-gate-inner">
+        <div class="tap-icon">♡</div>
+        <p class="tap-title">For Mummy</p>
+        <p class="tap-hint">Tap anywhere to begin</p>
+      </div>
+    </div>
     <div id="hearts-layer" aria-hidden="true"></div>
     <div id="confetti-layer" aria-hidden="true"></div>
     <div class="stage" aria-live="polite"></div>
 
-    <audio id="bg-audio" autoplay muted preload="auto" playsinline webkit-playsinline>
+    <audio id="bg-audio" preload="auto" playsinline webkit-playsinline>
       <source src="sssSpotify.com_downloader_1782533746191.mp3" type="audio/mpeg" />
     </audio>
 

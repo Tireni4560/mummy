@@ -61,6 +61,63 @@ body {
   z-index: 1;
 }
 
+#tap-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(ellipse at center, #2d1200 0%, #1a0a00 50%, #0d0500 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.8s ease;
+}
+
+#tap-gate.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tap-gate-inner {
+  text-align: center;
+  padding: 24px;
+}
+
+.tap-icon {
+  font-size: clamp(48px, 15vw, 80px);
+  color: #ff6b8a;
+  animation: heartPulse 1.8s ease-in-out infinite;
+  display: block;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.tap-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 7vw, 48px);
+  color: #fff8f0;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.tap-hint {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(14px, 3.5vw, 18px);
+  color: rgba(255, 248, 240, 0.5);
+  letter-spacing: 0.05em;
+  animation: hintPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
 .stage > * {
   opacity: 0;
 }
