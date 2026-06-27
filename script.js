@@ -263,16 +263,18 @@ function launchConfetti(count = 60) {
 }
 
 async function startExperience() {
+  audio.muted = true;
   const unlock = async () => {
     try {
+      audio.muted = false;
       await audio.play();
-      if (audio.paused) {
-        audio.muted = true;
-        await audio.play();
-        audio.muted = false;
-      }
     } catch (err) {
-      // Ignored; the experience still proceeds.
+      audio.muted = true;
+      try {
+        await audio.play();
+      } catch (playErr) {
+        // Ignored; the experience still proceeds.
+      }
     }
 
     document.removeEventListener('touchstart', unlock);
@@ -283,6 +285,7 @@ async function startExperience() {
 
   try {
     await audio.play();
+    audio.muted = false;
   } catch (error) {
     document.addEventListener('touchstart', unlock, { once: true, passive: true });
     document.addEventListener('click', unlock, { once: true, passive: true });
