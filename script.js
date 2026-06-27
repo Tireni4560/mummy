@@ -5,6 +5,7 @@ const tapGate = document.getElementById('tap-gate');
 const sequence = [
   { type: 'title', text: 'Happy Birthday Mummy', charDelay: 120, holdAfter: 2000 },
   { type: 'image', src: 'IMG-20251012-WA0025.jpg', holdDuration: 3000 },
+  { type: 'image', src: 'IMG-20231213-WA0004.jpg', holdDuration: 3000 },
   { type: 'words', lines: ['We may not always show it the way we should.'], charDelay: 60, holdAfter: 2000 },
   { type: 'image', src: 'IMG-20251012-WA0050.jpg', holdDuration: 3000 },
   { type: 'words', lines: ['But we love you more than words can hold.'], charDelay: 60, holdAfter: 2000 },
@@ -24,6 +25,7 @@ const sequence = [
   { type: 'words', lines: ['You are the reason this family stands.', 'The strength behind everything we are.'], charDelay: 60, holdAfter: 2000 },
   { type: 'image', src: 'IMG-20251012-WA0061.jpg', holdDuration: 3000 },
   { type: 'words', lines: ['We see you, Mummy.', 'We appreciate you.', 'We are proud to be yours.'], charDelay: 60, holdAfter: 3000 },
+  { type: 'image', src: 'IMG-20240109-WA0000.jpg', holdDuration: 3000 },
   { type: 'image', src: 'FB_IMG_1782534687060.jpg', holdDuration: 3000 },
   { type: 'closing' },
   { type: 'blackout' }
